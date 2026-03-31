@@ -1,177 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Rahul Sharma</title>
-
-<style>
-:root {
-  --bg: #ffffff;
-  --text: #111;
-  --accent: #2563eb;
-  --muted: #666;
-}
-
-body.dark {
-  --bg: #0f172a;
-  --text: #e5e7eb;
-  --accent: #60a5fa;
-  --muted: #9ca3af;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  transition: 0.3s;
-}
-
-/* Layout */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  background: var(--bg);
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-button {
-  background: none;
-  border: 1px solid var(--muted);
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  color: var(--text);
-}
-
-/* Sections */
-.section {
-  margin: 50px 0;
-}
-
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
-/* Links */
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Publications */
-.pub {
-  margin-bottom: 15px;
-}
-
-.small {
-  color: var(--muted);
-  font-size: 0.9em;
-}
-</style>
+  <title>Rahul Sharma</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 
 <body>
 
-<div class="container">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="publications.html">Publications</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+  <button onclick="toggleMode()">🌙</button>
+</nav>
 
-  <div class="header">
-    <h1>Rahul Sharma</h1>
-    <button onclick="toggleMode()">🌙</button>
-  </div>
+<h1>Rahul Sharma</h1>
 
-  <p>
-    Postdoctoral Researcher, AstraZeneca (Cambridge, UK)<br>
-    Machine Learning | Genomics | Biophysics | Biomechanics
-  </p>
+<p>
+Postdoctoral Researcher, AstraZeneca (Cambridge, UK)<br>
+Machine Learning | Genomics | Biophysics | Biomechanics
+</p>
 
-  <p>
-    📧 rs25.iitr@gmail.com |
-    <a href="https://scholar.google.co.uk/citations?hl=en&user=OPxzxGwAAAAJ">Scholar</a> |
-    <a href="https://github.com/rahul2512">GitHub</a> |
-    <a href="https://orcid.org/0000-0003-0700-3098">ORCID</a>
-  </p>
-
-  <p><a href="RSharma_CV.pdf">Download CV</a></p>
-
-  <div class="section">
-    <h2>About</h2>
-    <p>
-      I work at the intersection of machine learning, genomics, and statistical modeling,
-      focusing on large-scale biological data and mechanistic insights.
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>Research Interests</h2>
-    <ul>
-      <li>Machine Learning for Genomics</li>
-      <li>Population-scale Multi-omics</li>
-      <li>DNA/RNA Biophysics</li>
-      <li>Physics-informed ML</li>
-      <li>Musculoskeletal Modeling</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Selected Publications</h2>
-
-    <div class="pub">
-      <b>DNA G-Quadruplex Variants and Disease</b><br>
-      <span class="small">Nature Genetics (submitted)</span>
-    </div>
-
-    <div class="pub">
-      <b>Germline Mutational Signatures (900K Genomes)</b><br>
-      <span class="small">In preparation</span>
-    </div>
-
-    <div class="pub">
-      <b>cgNA+ DNA Mechanics Model</b><br>
-      <span class="small">J. Mol. Biol., 2023</span>
-    </div>
-
-  </div>
-
-  <div class="section">
-    <h2>Projects</h2>
-
-    <p><b>cgNA+</b> – Physics-informed DNA modeling</p>
-    <p><b>MSK ML Models</b> – Real-time biomechanical prediction</p>
-
-  </div>
-
-</div>
-
-<script>
-function toggleMode() {
-  document.body.classList.toggle("dark");
-}
-</script>
+<p>
+<a href="RSharma_CV.pdf">Download CV</a>
+</p>
 
 </body>
 </html>
