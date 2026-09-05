@@ -1,32 +1,1328 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Rahul Sharma</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Rahul Sharma — computational biologist, applied mathematician, and machine learning researcher."
+  />
+  <title>Rahul Sharma | Computational Biologist & ML Researcher</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-muted: #eef3f8;
+      --text: #152333;
+      --text-muted: #5d6b7b;
+      --primary: #155eef;
+      --primary-dark: #0b3ca7;
+      --accent: #00a896;
+      --border: #dbe3ec;
+      --shadow: 0 18px 50px rgba(21, 35, 51, 0.09);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 247, 251, 0.9);
+      border-bottom: 1px solid rgba(219, 227, 236, 0.8);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 8px 22px rgba(21, 94, 239, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 82px 0 70px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(0, 168, 150, 0.13), transparent 28%),
+        radial-gradient(circle at 10% 10%, rgba(21, 94, 239, 0.11), transparent 30%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin-bottom: 22px;
+      font-size: clamp(2.7rem, 6vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-description {
+      max-width: 720px;
+      color: var(--text-muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 750;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: var(--primary);
+      box-shadow: 0 9px 22px rgba(21, 94, 239, 0.23);
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .button-secondary:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 30px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card::after {
+      content: "";
+      position: absolute;
+      right: -55px;
+      bottom: -70px;
+      width: 180px;
+      height: 180px;
+      border: 28px solid rgba(21, 94, 239, 0.08);
+      border-radius: 50%;
+    }
+
+    .profile-initials {
+      width: 86px;
+      height: 86px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 24px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      font-size: 1.8rem;
+      font-weight: 850;
+      letter-spacing: -0.08em;
+    }
+
+    .profile-card h2 {
+      margin-bottom: 6px;
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+    }
+
+    .profile-role {
+      margin-bottom: 22px;
+      color: var(--primary);
+      font-weight: 750;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-list a:hover {
+      color: var(--primary);
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+    }
+
+    .section-intro {
+      max-width: 560px;
+      color: var(--text-muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 8px 28px rgba(21, 35, 51, 0.04);
+    }
+
+    .card p + p {
+      margin-top: 16px;
+    }
+
+    .highlight-card {
+      background: linear-gradient(135deg, #102a43, #155eef);
+      color: #ffffff;
+      border: 0;
+    }
+
+    .highlight-card p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 1.55rem;
+    }
+
+    .stat span {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.78rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      bottom: 25px;
+      left: 111px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 42px;
+    }
+
+    .timeline-date {
+      padding-top: 26px;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .timeline-content {
+      position: relative;
+      padding: 26px 28px 28px;
+    }
+
+    .timeline-content::before {
+      content: "";
+      position: absolute;
+      top: 31px;
+      left: -49px;
+      width: 13px;
+      height: 13px;
+      border: 4px solid var(--bg);
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 5px;
+      font-size: 1.3rem;
+      letter-spacing: -0.035em;
+    }
+
+    .timeline-content h4 {
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+    }
+
+    .timeline-content p + p {
+      margin-top: 12px;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      background: var(--surface);
+      font-size: 0.85rem;
+      font-weight: 650;
+    }
+
+    .tag.primary {
+      color: var(--primary);
+      border-color: rgba(21, 94, 239, 0.2);
+      background: rgba(21, 94, 239, 0.07);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 22px;
+    }
+
+    .skill-groups {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-group {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .skill-group h3 {
+      margin-bottom: 10px;
+      font-size: 0.96rem;
+    }
+
+    .skill-group p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .research-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .research-number {
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+    }
+
+    .research-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .research-card p {
+      color: var(--text-muted);
+      font-size: 0.91rem;
+    }
+
+    .publication-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 15px;
+      padding: 19px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .publication-number {
+      color: var(--primary);
+      font-weight: 850;
+    }
+
+    .publication p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    .publication strong {
+      color: var(--text);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .simple-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .simple-list div {
+      padding-left: 17px;
+      border-left: 3px solid var(--accent);
+      color: var(--text-muted);
+    }
+
+    .simple-list strong {
+      display: block;
+      color: var(--text);
+    }
+
+    .footer {
+      padding: 45px 0;
+      color: rgba(255, 255, 255, 0.76);
+      background: #102a43;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer strong {
+      color: #ffffff;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: #ffffff;
+      background: var(--primary);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      box-shadow: 0 10px 24px rgba(21, 94, 239, 0.28);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .skills-layout,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .profile-card,
+      .card,
+      .timeline-content,
+      .research-card {
+        padding: 22px;
+      }
+
+      .timeline::before {
+        left: 6px;
+      }
+
+      .timeline-item {
+        display: block;
+        padding-left: 28px;
+      }
+
+      .timeline-date {
+        padding: 0 0 8px;
+        text-align: left;
+      }
+
+      .timeline-content::before {
+        top: 27px;
+        left: -29px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-actions,
+      .back-to-top,
+      .footer-links {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .hero {
+        padding: 30px 0;
+      }
+
+      .section {
+        padding: 30px 0;
+        break-inside: avoid;
+      }
+
+      .card,
+      .timeline-content,
+      .research-card,
+      .publication {
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Rahul Sharma home">
+        <span class="brand-mark">RS</span>
+        <span>Rahul Sharma</span>
+      </a>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="publications.html">Publications</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-  <button onclick="toggleMode()">🌙</button>
-</nav>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<h1>Rahul Sharma</h1>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Computational Biology · Applied Mathematics · AI</div>
 
-<p>
-Postdoctoral Researcher, AstraZeneca (Cambridge, UK)<br>
-Machine Learning | Genomics | Biophysics | Biomechanics
-</p>
+          <h1>Researching the complex systems behind biology.</h1>
 
-<p>
-<a href="RSharma_CV.pdf">Download CV</a>
-</p>
+          <p class="hero-description">
+            I am a computational biologist and applied mathematician working at the
+            intersection of genomics, machine learning, molecular simulation, and
+            AI-assisted scientific discovery.
+          </p>
 
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">
+              Get in touch
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <button class="button button-secondary" onclick="window.print()">
+              Download / Print CV
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="profile-initials">RS</div>
+
+          <h2>Rahul Sharma</h2>
+          <p class="profile-role">Postdoctoral Researcher</p>
+
+          <div class="contact-list">
+            <a href="mailto:rs25.iitr@gmail.com">rs25.iitr@gmail.com</a>
+            <a href="mailto:rahul.sharma8@astrazeneca.com">
+              rahul.sharma8@astrazeneca.com
+            </a>
+            <a href="tel:+447440558906">+44 7440 558906</a>
+            <span>Cambridge, United Kingdom</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Profile</div>
+            <h2>Building bridges between data and discovery.</h2>
+          </div>
+
+          <p class="section-intro">
+            My work combines statistical modelling, large-scale biological data
+            analysis, molecular simulation, and modern machine learning.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <p>
+              I am a postdoctoral researcher at AstraZeneca’s Centre for Genomics
+              Research, where I develop computational methods for genomic and
+              multi-omic data analysis.
+            </p>
+
+            <p>
+              My research spans population genetics, phenome-wide association
+              studies, whole-genome sequencing, functional annotation, and
+              AI-assisted integration of genomic, phenotypic, and clinical evidence.
+            </p>
+
+            <p>
+              Previously, I completed a PhD in Applied Mathematics at EPFL, focusing
+              on sequence-dependent mechanics of double-stranded nucleic acids.
+            </p>
+          </article>
+
+          <article class="card highlight-card">
+            <h3>Research at a glance</h3>
+            <p>
+              From molecular-scale DNA mechanics to population-scale genomics, I
+              develop tools that make complex biological systems more interpretable
+              and actionable.
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>500K+</strong>
+                <span>UK Biobank participants analysed</span>
+              </div>
+
+              <div class="stat">
+                <strong>900K</strong>
+                <span>Whole genomes studied</span>
+              </div>
+
+              <div class="stat">
+                <strong>TB-scale</strong>
+                <span>Molecular dynamics simulations</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Experience</div>
+            <h2>Selected experience</h2>
+          </div>
+
+          <p class="section-intro">
+            Research roles spanning genomics, applied mathematics, molecular
+            modelling, and machine learning.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2023–Present</div>
+
+            <div class="timeline-content card">
+              <h3>Postdoctoral Researcher</h3>
+              <h4>Centre for Genomics Research · AstraZeneca · United Kingdom</h4>
+
+              <p>
+                Developed AI-assisted workflows and scalable analysis pipelines
+                using large-scale genomic, phenotypic, clinical, and multi-omic
+                datasets.
+              </p>
+
+              <p>
+                Applied unsupervised machine learning, population genetics, PheWAS,
+                whole-genome sequencing analysis, functional annotation, and LLM
+                approaches to support phenotype- and disease-centric interpretation.
+              </p>
+
+              <div class="tag-grid" style="margin-top: 18px;">
+                <span class="tag primary">Genomics</span>
+                <span class="tag primary">PheWAS</span>
+                <span class="tag primary">Multi-omics</span>
+                <span class="tag primary">LLMs</span>
+                <span class="tag primary">Agentic AI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2022–2023</div>
+
+            <div class="timeline-content card">
+              <h3>Postdoctoral Researcher</h3>
+              <h4>Institute of Mathematics · EPFL · Switzerland</h4>
+
+              <p>
+                Worked on statistical modelling of DNA mismatch mechanics and
+                developed an interactive web interface for the cgNA+ model of
+                nucleic-acid shape and mechanics.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2018–2022</div>
+
+            <div class="timeline-content card">
+              <h3>PhD Researcher in Applied Mathematics</h3>
+              <h4>Institute of Mathematics · EPFL · Switzerland</h4>
+
+              <p>
+                Developed cgNA+, a physics-informed coarse-grained model for
+                sequence-dependent mechanics of double-stranded nucleic acids.
+              </p>
+
+              <p>
+                Generated and analysed terabytes of atomistic molecular dynamics
+                simulations and created machine-learning tools enabling
+                genome-scale exploration of DNA mechanics.
+              </p>
+
+              <div class="tag-grid" style="margin-top: 18px;">
+                <span class="tag primary">Molecular dynamics</span>
+                <span class="tag primary">Physics-informed ML</span>
+                <span class="tag primary">DNA mechanics</span>
+                <span class="tag primary">HPC computing</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2021–2025</div>
+
+            <div class="timeline-content card">
+              <h3>Collaborative Researcher</h3>
+              <h4>Machine Learning for Biomechanical Modelling</h4>
+
+              <p>
+                Led machine-learning development for real-time biomechanical models
+                in clinical and sports applications.
+              </p>
+
+              <p>
+                Applied neural networks to motion-capture data, mapped inertial
+                motion capture to computationally expensive musculoskeletal models,
+                and introduced explainability and machine-learning best practices.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2016–2017</div>
+
+            <div class="timeline-content card">
+              <h3>Research Intern and Master’s Thesis Researcher</h3>
+              <h4>University of Oxford · United Kingdom</h4>
+
+              <p>
+                Used coarse-grained molecular modelling and Monte Carlo methods to
+                investigate the structural dynamics of jointed DNA nanostructures.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Research</div>
+            <h2>Current research themes</h2>
+          </div>
+
+          <p class="section-intro">
+            Methods and biological questions that define my current research.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <div class="research-number">01 / GENOMICS</div>
+            <h3>Human germline mutational signatures</h3>
+            <p>
+              Characterising single-nucleotide, double-nucleotide, and
+              insertion-deletion mutational signatures across hundreds of thousands
+              of whole genomes and diverse ancestries.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-number">02 / NON-CODING DNA</div>
+            <h3>G-quadruplex variation and disease susceptibility</h3>
+            <p>
+              Identifying disease-associated and functional G-quadruplexes through
+              mechanistic aggregate models and integration of multi-omic evidence.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-number">03 / CLONAL HAEMATOPOIESIS</div>
+            <h3>Ageing, mutational processes, and sequencing artefacts</h3>
+            <p>
+              Quantifying age-related and sequencing-related mutational signatures
+              in clonal haematopoiesis and control samples.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-number">04 / AI FOR SCIENCE</div>
+            <h3>AI-assisted evidence integration</h3>
+            <p>
+              Building workflows that use LLMs and agentic AI to explore, integrate,
+              and summarise genomic, phenotypic, clinical, and functional evidence.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-number">05 / DNA MECHANICS</div>
+            <h3>Sequence-dependent mechanics of nucleic acids</h3>
+            <p>
+              Developing coarse-grained and physics-informed models to understand
+              how DNA sequence influences shape, flexibility, and interactions.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-number">06 / BIOMECHANICS</div>
+            <h3>Machine learning for motion capture</h3>
+            <p>
+              Creating real-time models that translate portable motion-capture data
+              into clinically and biomechanically meaningful outputs.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Capabilities</div>
+            <h2>Technical toolkit</h2>
+          </div>
+
+          <p class="section-intro">
+            A practical combination of scientific computing, machine learning,
+            bioinformatics, and research software development.
+          </p>
+        </div>
+
+        <div class="skills-layout">
+          <div class="card">
+            <h3 style="margin-bottom: 18px;">Core skills</h3>
+
+            <div class="tag-grid">
+              <span class="tag primary">Python</span>
+              <span class="tag primary">R</span>
+              <span class="tag primary">Bash</span>
+              <span class="tag primary">PyTorch</span>
+              <span class="tag primary">Keras</span>
+              <span class="tag primary">AWS</span>
+              <span class="tag primary">Linux</span>
+              <span class="tag primary">Git</span>
+              <span class="tag primary">HPC</span>
+              <span class="tag primary">Bioinformatics</span>
+              <span class="tag primary">Statistical modelling</span>
+              <span class="tag primary">Deep learning</span>
+              <span class="tag primary">Agentic AI</span>
+              <span class="tag primary">Molecular dynamics</span>
+            </div>
+          </div>
+
+          <div class="skill-groups">
+            <div class="skill-group">
+              <h3>Machine learning</h3>
+              <p>
+                Unsupervised learning, neural networks, RNNs, LSTMs, GRUs, CNNs,
+                autoencoders, explainable AI, and physics-informed machine learning.
+              </p>
+            </div>
+
+            <div class="skill-group">
+              <h3>Genomics and bioinformatics</h3>
+              <p>
+                Population genetics, PheWAS, GWAS Catalog analysis, whole-genome
+                sequencing, multi-omics, functional annotation, and phenotype
+                alignment.
+              </p>
+            </div>
+
+            <div class="skill-group">
+              <h3>Scientific computing</h3>
+              <p>
+                Molecular dynamics, coarse-grained modelling, Monte Carlo methods,
+                statistical mechanics, high-performance computing, and GPU-based
+                workflows.
+              </p>
+            </div>
+
+            <div class="skill-group">
+              <h3>Programming</h3>
+              <p>
+                Python and Bash proficient; MATLAB and R intermediate; C++ and
+                JavaScript elementary.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Selected work</div>
+            <h2>Publications and research outputs</h2>
+          </div>
+
+          <p class="section-intro">
+            Selected publications, manuscripts, software, and research tools.
+          </p>
+        </div>
+
+        <div class="publication-list">
+          <article class="publication">
+            <div class="publication-number">01</div>
+            <p>
+              <strong>Decoding Human Germline Mutagenesis Through Population Genomics:</strong>
+              Mutational signatures of single-nucleotide, double-nucleotide, and
+              insertion-deletion variants across 769,232 whole genomes. In preparation.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">02</div>
+            <p>
+              <strong>The Impact of Non-coding DNA G-quadruplex Variants on Human Traits
+              and Disease Susceptibility.</strong>
+              Manuscript under review.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">03</div>
+            <p>
+              <strong>Causes and Consequences of Clonal Haematopoiesis Without Identified
+              Genetic Drivers in 407,512 Whole Genome-Sequenced UK Biobank Participants.</strong>
+              Contributing author; manuscript under review.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">04</div>
+            <p>
+              <strong>Phenome-wide analysis of copy number variants in 470,727 UK Biobank
+              genomes.</strong>
+              Contributing author, Nature, 2026.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">05</div>
+            <p>
+              <strong>Machine Learning Workflows for Motion Capture-driven Biomechanical
+              Modelling.</strong>
+              Sharma et al., Research Square, 2025.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">06</div>
+            <p>
+              <strong>cgNA+web: A web-based visual interface to the cgNA+ sequence-dependent
+              statistical mechanics model of double-stranded nucleic acids.</strong>
+              Journal of Molecular Biology, 2023.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">07</div>
+            <p>
+              <strong>Machine learning for optical motion capture-driven musculoskeletal
+              modeling from inertial motion capture data.</strong>
+              Bioengineering, 2023.
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-number">08</div>
+            <p>
+              <strong>Characterizing the Motion of Jointed DNA Nanostructures Using a
+              Coarse-Grained Model.</strong>
+              ACS Nano, 2017.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-column">
+        <article class="card">
+          <div class="section-label">Education</div>
+          <h2>Academic background</h2>
+
+          <div class="simple-list">
+            <div>
+              <strong>PhD, Applied Mathematics</strong>
+              EPFL, Switzerland · 2018–2022
+            </div>
+
+            <div>
+              <strong>Integrated Bachelor’s and Master’s, Chemistry</strong>
+              Indian Institute of Technology Roorkee · 2012–2017
+            </div>
+
+            <div>
+              <strong>Master’s thesis research</strong>
+              University of Oxford · 2016–2017
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="section-label">Recognition</div>
+          <h2>Awards and initiatives</h2>
+
+          <div class="simple-list">
+            <div>
+              <strong>Department Gold Medal</strong>
+              Indian Institute of Technology Roorkee
+            </div>
+
+            <div>
+              <strong>INSPIRE Fellowship</strong>
+              Department of Science & Technology, India · 2012–2017
+            </div>
+
+            <div>
+              <strong>Journal Club Organiser</strong>
+              AstraZeneca · Monthly sessions with 30+ attendees
+            </div>
+
+            <div>
+              <strong>Teaching and mentorship</strong>
+              Linear algebra, analysis, mathematical modelling, and machine learning
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="card highlight-card">
+          <div class="section-label" style="color: #7ee7d7;">Contact</div>
+          <h2>Let’s discuss science, computation, and discovery.</h2>
+
+          <p style="margin-top: 17px;">
+            I am interested in interdisciplinary research spanning genomics,
+            mathematical modelling, machine learning, and AI-assisted scientific
+            workflows.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-secondary" href="mailto:rs25.iitr@gmail.com">
+              Email Rahul
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a class="button button-secondary" href="tel:+447440558906">
+              Call
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>
+        <strong>Rahul Sharma</strong><br />
+        Computational Biology · Applied Mathematics · AI
+      </p>
+
+      <div class="footer-links">
+        <a href="mailto:rs25.iitr@gmail.com">Email</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    ↑
+  </button>
+
+  <script>
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
 </body>
 </html>
